@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "poppinsBold";
+    src: url("/fonts/poppinsBold.otf");
+}
+
+@font-face {
+    font-family: "poppinsSemiBold";
+    src: url("/fonts/poppinsSemiBold.otf");
+}
+
+@layer base {
+    a,
+    button {
+        @apply select-none;
+    }
+}
