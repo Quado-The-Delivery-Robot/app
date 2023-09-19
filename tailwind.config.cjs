@@ -33,7 +33,7 @@ module.exports = {
             },
             fontFamily: {
                 poppinsBold: ["poppinsBold", ...defaultTheme.fontFamily.sans],
-                poppinssemiBold: ["poppinsSemiBold", ...defaultTheme.fontFamily.sans],
+                poppinsSemibold: ["poppinsSemibold", ...defaultTheme.fontFamily.sans],
             },
         },
     },

@@ -8,11 +8,19 @@
 }
 
 @font-face {
-    font-family: "poppinsSemiBold";
-    src: url("/fonts/poppinsSemiBold.otf");
+    font-family: "poppinsSemibold";
+    src: url("/fonts/poppinsSemibold.otf");
 }
 
 @layer base {
+    h1, h2, h3 {
+        @apply font-poppinsBold text-primary
+    }
+
+    p, a, button {
+        @apply font-poppinsSemibold text-primary
+    }
+
     a,
     button {
         @apply select-none;
