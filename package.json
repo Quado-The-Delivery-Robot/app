@@ -41,5 +41,11 @@
 		"typescript": "^5.0.4",
 		"vite": "^4.3.9"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@auth/core": "^0.15.0",
+		"@auth/mongodb-adapter": "^2.0.0",
+		"@auth/sveltekit": "^0.3.7",
+		"mongodb": "^6.1.0"
+	}
 }

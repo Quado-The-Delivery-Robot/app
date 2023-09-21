@@ -9,5 +9,5 @@
     <Title />
     <Login />
     <Footer />
-    <Dots/>
+    <Dots />
 </div>
