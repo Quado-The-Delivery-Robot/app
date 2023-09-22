@@ -1,7 +1,6 @@
-import type { RequestEvent, RequestHandler } from "./$types";
+import type { RequestEvent } from "./$types";
 import type { item } from "$lib/api/types";
-import { error, json } from "@sveltejs/kit";
-import authenticateUser from "$lib/api/authenticateUser";
+import { json } from "@sveltejs/kit";
 
 type request = {
     restaurant: string;
@@ -10,13 +9,13 @@ type request = {
 
 const valid = ["Subway", "Burger King"];
 
-export async function POST({ request }: RequestEvent) {
-    const user = authenticateUser(request);
+export async function POST({ request, locals }: RequestEvent) {
+    const session = locals.getSession();
 
-    if (user == null) {
+    if (!session) {
         return json({
             success: false,
-            error: "No user.",
+            error: "User not logged in.",
         });
     }
 
@@ -31,4 +30,7 @@ export async function POST({ request }: RequestEvent) {
     }
 
     console.log("placing order", restaurant, order);
+    return json({
+        success: true,
+    });
 }
