@@ -1,4 +1,14 @@
-<h1 class="absolute top-100px w-55% left-20 text-emerald-300 text-4xl">home</h1>
-<h2 class="absolute top-[15%] w-55% left-14 bg-brand rounded-xl px-12 py-4 text-2xl text-black ">place order</h2>
-<h2 class="absolute top-1/4 w-55% left-16 text-emerald-300 text-xl">Restuarants</h2>
-<h3 Class="absolute top-1/3 left-20 w-55% text-amber-300 bg-red-600 rounded-xl px-3  h-6 text-lg">McDonalds</h3>
+<script lang="ts">
+    import { page } from "$app/stores";
+</script>
+
+{#if $page.data.session}
+    <h1>Protected page</h1>
+    <p>This is a protected content. You can access this content because you are signed in.</p>
+    <p>Session expiry: {$page.data.session?.expires}</p>
+{:else}
+    <h1>Access Denied</h1>
+    <p>
+        <a href="/auth/signin"> You must be signed in to view this page </a>
+    </p>
+{/if}
