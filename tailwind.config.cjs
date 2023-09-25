@@ -7,7 +7,20 @@ module.exports = {
         extend: {
             textColor: {
                 brand: "#46EBA5",
-                primary: "#FFFFFF",
+                primary: {
+                    DEFAULT: "#FFFFFF",
+                    50: "#FFFFFF",
+                    100: "#FFFFFF",
+                    200: "#FFFFFF",
+                    300: "#FFFFFF",
+                    400: "#FFFFFF",
+                    500: "#FFFFFF",
+                    600: "#E3E3E3",
+                    700: "#C7C7C7",
+                    800: "#ABABAB",
+                    900: "#8F8F8F",
+                    950: "#818181",
+                },
             },
             colors: {
                 brand: {
