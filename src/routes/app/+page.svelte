@@ -1,7 +1,7 @@
-<h1>Home</h1>
-<div>
-    <div class="flex justify-between items-center">
-        <p>reconmendations</p>
-        <a href="/all">See all</a>
-    </div>
-</div>
+<script lang="ts">
+    import Section from "$lib/pages/app/home/section.svelte";
+</script>
+
+<h1 class="text-6xl mb-4">Home</h1>
+
+<Section />
