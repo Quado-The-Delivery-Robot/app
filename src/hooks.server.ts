@@ -6,5 +6,5 @@ import clientPromise from "$lib/database/connect";
 
 export const handle = SvelteKitAuth({
     providers: [GoogleProvider({ clientId: GOOGLE_CLIENT_ID, clientSecret: GOOGLE_SECERT, redirectProxyUrl: "https://example.com/auth" })],
-    adapter: MongoDBAdapter(clientPromise, { databaseName: "Quado" }),
+    adapter: MongoDBAdapter(clientPromise, { databaseName: "auth" }),
 });

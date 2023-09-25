@@ -22,16 +22,6 @@ export async function POST({ request, locals }: RequestEvent) {
         });
     }
 
-    const { restaurant, order }: request = await request.json();
-
-    // To be replaced with database searching soon.
-    if (valid.includes(restaurant) == false) {
-        return json({
-            success: false,
-            error: "Invalid resturant.",
-        });
-    }
-
     const result = await ordersCollection.updateOne(
         {
             user: session.user?.email,
