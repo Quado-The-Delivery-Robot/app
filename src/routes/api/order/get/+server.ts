@@ -13,30 +13,5 @@ type request = {
 };
 
 export async function POST({ request, locals }: RequestEvent) {
-    const session = await locals.getSession();
 
-    if (!session) {
-        return json({
-            success: false,
-            error: "User not logged in.",
-        });
-    }
-
-    const result = await ordersCollection.updateOne(
-        {
-            user: session.user?.email,
-        },
-        {
-            $push: {
-                orders: order,
-            },
-        },
-        {
-            upsert: true,
-        }
-    );
-
-    return json({
-        success: result.acknowledged,
-    });
 }
