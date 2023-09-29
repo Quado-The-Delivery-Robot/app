@@ -3,7 +3,7 @@
 
     let dot: HTMLDivElement;
 
-    onMount(() => { 
+    onMount(() => {
         dot.style.left = `${Math.random() * window.innerWidth}px`;
         dot.style.top = `${Math.random() * window.innerHeight}px`;
     });
