@@ -6,7 +6,7 @@
     export let sectionName: string;
 </script>
 
-<div class="px-7">
+<div class="w-full">
     <SectionHeader {sectionName} />
     <SectionBody {endpoint} />
 </div>
