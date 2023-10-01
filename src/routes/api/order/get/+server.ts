@@ -1,17 +1,9 @@
 import type { RequestEvent } from "./$types";
 import type { item } from "$lib/api/types";
 import { json } from "@sveltejs/kit";
-import { getCollection } from "$lib/database/connect";
+import { getCollection } from "$lib/database";
 import type { Collection } from "mongodb";
 
-const ordersCollection: Collection = getCollection("orders");
-const valid = ["Subway", "Burger King"];
+const ordersCollection: Collection = getCollection("core", "orders");
 
-type request = {
-    restaurant: string;
-    order: item[];
-};
-
-export async function POST({ request, locals }: RequestEvent) {
-
-}
+export async function POST() {}

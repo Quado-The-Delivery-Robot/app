@@ -6,8 +6,7 @@
 <Search />
 
 <div class="flex flex-col justify-center items-start gap-16">
-    <Section endpoint="/api/restaurants/recommended" sectionName="Recommendations" />
-    <Section endpoint="/api/restaurants/recommended" sectionName="New to you" />
-    <Section endpoint="/api/restaurants/recommended" sectionName="Recent" />
-    <Section endpoint="/api/restaurants/recommended" sectionName="Recommendations" />
+    <Section endpoint="/api/restaurants/recommended" sectionName="Recommendations" type="full" />
+    <Section endpoint="/api/restaurants/recommended" sectionName="New to you" type="mini" />
+    <Section endpoint="/api/restaurants/recommended" sectionName="Recent" type="mini" />
 </div>

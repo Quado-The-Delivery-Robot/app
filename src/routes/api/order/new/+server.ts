@@ -1,12 +1,12 @@
 import type { RequestEvent } from "./$types";
 import type { item } from "$lib/api/types";
 import { json } from "@sveltejs/kit";
-import { getCollection } from "$lib/database/connect";
+import { getCollection } from "$lib/database";
 import type { Collection } from "mongodb";
 import type { Session } from "@auth/core/types";
 
-const ordersCollection: Collection = getCollection("orders");
-const valid = ["Subway", "Burger King"];
+const ordersCollection: Collection = getCollection("core", "orders");
+let validRestaurants: string[] = [];
 
 type request = {
     restaurant: string;
@@ -14,11 +14,11 @@ type request = {
 };
 
 export async function POST({ request, locals }: RequestEvent) {
-    const session: Session = await locals.getSession() as Session;
+    const session: Session = (await locals.getSession()) as Session;
     const { restaurant, order }: request = await request.json();
 
     // To be replaced with database searching soon.
-    if (valid.includes(restaurant) == false) {
+    if (validRestaurants.includes(restaurant) == false) {
         return json({
             success: false,
             error: "Invalid resturant.",

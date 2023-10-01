@@ -4,10 +4,12 @@
     import BasketIcon from "../images/basket.svelte";
     import PlusIcon from "../images/plus.svelte";
 
+    export let actionBar: HTMLDivElement;
+
     import { page } from "$app/stores";
 </script>
 
-<div class="absolute bottom-0 w-screen h-auto flex justify-between items-center px-10 z-10 bg-background border-t border-backgroundSecondary children:pt-3 children:pb-6" id="actionBar">
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 max-w-[650px] w-screen h-auto flex justify-between items-center px-10 z-10 bg-opacity-0 backdrop-blur-lg backdrop-brightness-50 children:pt-3 children:pb-6" bind:this={actionBar}>
     <a href="/">
         <HomeIcon classes="aspect-square h-7 fill-brand-600" />
     </a>

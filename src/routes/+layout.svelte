@@ -67,6 +67,6 @@
     <title>Quado</title>
 </svelte:head>
 
-<main class="h-auto w-full select-text overflow-hidden text-center font-salmaPro text-primary">
+<main class="h-auto w-screen select-text overflow-hidden text-center font-salmaPro text-primary">
     <slot />
 </main>

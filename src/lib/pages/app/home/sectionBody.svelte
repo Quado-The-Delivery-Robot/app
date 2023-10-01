@@ -1,8 +1,11 @@
 <script lang="ts">
+    import MiniContainer from "./containers/mini.svelte";
+    import FullContainer from "./containers/full.svelte";
     import { onMount } from "svelte";
-    import Restaurant from "./restaurant.svelte";
 
     export let endpoint: string;
+    export let type: "mini" | "full";
+
     let restaurants: any = [];
 
     onMount(async () => {
@@ -12,8 +15,14 @@
     });
 </script>
 
-<div class="flex gap-4">
-    {#each restaurants as restaurant}
-        <Restaurant {restaurant} />
-    {/each}
+<div class="rounded-lg overflow-hidden">
+    <div class="flex gap-4 w-full overflow-x-auto snap-x">
+        {#each restaurants as restaurant}
+            {#if type == "mini"}
+                <MiniContainer {restaurant} />
+            {:else}
+                <FullContainer {restaurant} />
+            {/if}
+        {/each}
+    </div>
 </div>

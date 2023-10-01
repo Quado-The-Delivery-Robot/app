@@ -45,8 +45,7 @@ module.exports = {
                 normal: "10px",
             },
             fontFamily: {
-                poppinsBold: ["poppinsBold", ...defaultTheme.fontFamily.sans],
-                poppinsSemibold: ["poppinsSemibold", ...defaultTheme.fontFamily.sans],
+                poppins: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
         },
     },

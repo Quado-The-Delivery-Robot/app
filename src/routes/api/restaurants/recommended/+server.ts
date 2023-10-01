@@ -1,8 +1,8 @@
 import { json } from "@sveltejs/kit";
-import { getCollection } from "$lib/database/connect";
+import { getCollection } from "$lib/database";
 import type { Collection } from "mongodb";
 
-const restaurantsCollection: Collection = getCollection("restaurants");
+const restaurantsCollection: Collection = getCollection("core", "restaurants");
 
 export async function GET() {
     const result = restaurantsCollection.find().limit(5);
@@ -10,8 +10,6 @@ export async function GET() {
 
     return json({
         success: restaurants.length > 0,
-        restaurants: restaurants.map(({ name, icon }) => {
-            return { name, icon };
-        }),
+        restaurants: restaurants,
     });
 }

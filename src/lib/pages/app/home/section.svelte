@@ -4,9 +4,10 @@
 
     export let endpoint: string;
     export let sectionName: string;
+    export let type: "mini" | "full";
 </script>
 
 <div class="w-full">
     <SectionHeader {sectionName} />
-    <SectionBody {endpoint} />
+    <SectionBody {endpoint} {type} />
 </div>

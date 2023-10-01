@@ -6,8 +6,11 @@
 </script>
 
 <div class="bg-gradient-to-b from-backgroundSecondary to-background w-screen h-screen">
-    <Title />
-    <Login />
-    <Footer />
+    <div class="absolute z-[3] w-screen h-screen">
+        <Title />
+        <Login />
+        <Footer />
+    </div>
+
     <Dots />
 </div>

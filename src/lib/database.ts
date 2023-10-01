@@ -5,23 +5,29 @@ const options = {};
 
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
-let db: Db;
+let databases: { [key: string]: Db } = {};
+
+function getDatabases(client: MongoClient) {
+    databases["core"] = client.db("core");
+    databases["app"] = client.db("app");
+}
 
 if (NODE_ENV === "development") {
     if (!(global as any)._mongoClientPromise) {
         client = new MongoClient(MONGODB_CONNECTION_STRING, options);
         (global as any)._mongoClientPromise = client.connect();
-        db = client.db("app");
+        getDatabases(client);
     }
+
     clientPromise = (global as any)._mongoClientPromise;
 } else {
     client = new MongoClient(MONGODB_CONNECTION_STRING, options);
     clientPromise = client.connect();
-    db = client.db("app");
+    getDatabases(client);
 }
 
 export default clientPromise;
 
-export function getCollection(collection: string): Collection {
-    return db.collection(collection);
+export function getCollection(databaseName: string, collectionName: string): Collection {
+    return databases[databaseName].collection(collectionName);
 }
