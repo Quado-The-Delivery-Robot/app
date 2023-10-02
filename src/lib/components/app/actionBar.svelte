@@ -3,13 +3,12 @@
     import SettingsIcon from "../images/settings.svelte";
     import BasketIcon from "../images/basket.svelte";
     import PlusIcon from "../images/plus.svelte";
+    import { page } from "$app/stores";
 
     export let actionBar: HTMLDivElement;
-
-    import { page } from "$app/stores";
 </script>
 
-<div class="absolute bottom-0 left-1/2 -translate-x-1/2 max-w-[650px] w-screen h-auto flex justify-between items-center px-10 z-10 bg-opacity-0 backdrop-blur-lg backdrop-brightness-50 children:pt-3 children:pb-6" bind:this={actionBar}>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 max-w-[650px] w-screen h-auto flex justify-between items-center px-10 z-10 backdrop-blur-lg backdrop-brightness-[0.1] children:pt-3 children:pb-6" bind:this={actionBar}>
     <a href="/">
         <HomeIcon classes="aspect-square h-7 fill-brand-600" />
     </a>
@@ -20,7 +19,7 @@
 
     <div class="px-2">
         <div class="h-7 aspect-square relative">
-            <button class="border-[2px] border-backgroundSecondary absolute -translate-y-[calc(50%_+_0.1rem)] left-1/2 -translate-x-1/2 bg-brand-600 rounded-xl rotate-45 p-1" id="quickActionButton">
+            <button class="border border-backgroundSecondary absolute -translate-y-[calc(50%_+_0.1rem)] left-1/2 -translate-x-1/2 bg-brand-600 rounded-xl rotate-45 p-1" id="quickActionButton">
                 <PlusIcon classes="aspect-square h-9 -rotate-45 fill-black" />
             </button>
         </div>

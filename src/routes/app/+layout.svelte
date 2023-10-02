@@ -7,6 +7,7 @@
     let contentContainer: HTMLDivElement;
     let background: HTMLDivElement;
     let scrollTicking: boolean = false;
+    let isMobile: boolean = false;
 
     function updateBackground() {
         background.style.backgroundPosition = `0% ${(contentContainer.scrollTop / background.clientHeight) * 100}%`;
@@ -31,15 +32,20 @@
     }
 
     onMount(() => {
-        updateActionBarDependentsHeight();
+        isMobile = matchMedia("(pointer:fine)").matches;
 
+        updateActionBarDependentsHeight();
         window.addEventListener("resize", updateActionBarDependentsHeight);
     });
 </script>
 
 <div class="absolute w-screen bg-gradient-to-b from-backgroundSecondary via-background to-background z-[-1] bg-no-repeat" id="background" bind:this={background} />
 
-<div class="absolute h-screen top-0 left-1/2 -translate-x-1/2 w-screen overflow-y-auto px-7 pt-12 max-w-[650px]" bind:this={contentContainer} on:scroll={onScroll}>
+<div class="absolute h-screen top-0 left-1/2 -translate-x-1/2 w-screen max-w-[650px] px-7 pt-12 overflow-y-auto" bind:this={contentContainer} on:scroll={onScroll}>
+    {#if isMobile}
+        <p class="w-full rounded-lg border border-backgroundSecondary px-6 py-4 bg-red-500 text-left mb-6 font-medium">Quado is intended for use on mobile devices. Expect bugs while using on desktop during the beta phases.</p>
+    {/if}
+
     <Header />
 
     <slot />

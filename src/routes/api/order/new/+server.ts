@@ -5,7 +5,7 @@ import { getCollection } from "$lib/database";
 import type { Collection } from "mongodb";
 import type { Session } from "@auth/core/types";
 
-const ordersCollection: Collection = getCollection("core", "orders");
+const ordersCollection: Collection = getCollection("user", "orders");
 let validRestaurants: string[] = [];
 
 type request = {

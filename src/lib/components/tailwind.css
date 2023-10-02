@@ -148,6 +148,23 @@
 
 @layer base {
     * {
+        scrollbar-width: auto;
+        scrollbar-color: transparent #ffffff;
+    }
+
+    *::-webkit-scrollbar {
+        @apply w-[5px] h-[5px];
+    }
+
+    *::-webkit-scrollbar-track {
+        @apply hidden;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        @apply bg-white rounded-full;
+    }
+
+    * {
         @apply font-poppins text-primary;
     }
 
@@ -157,7 +174,8 @@
         @apply font-bold;
     }
 
-    p, input {
+    p,
+    input {
         @apply font-normal;
     }
 
