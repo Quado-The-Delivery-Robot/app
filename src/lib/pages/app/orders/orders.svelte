@@ -12,3 +12,11 @@
     </p>
 
 </div>
+
+<style>
+    .inProgress {
+        -webkit-box-shadow: 0px 0px 52px -3px rgba(70, 235, 165, 0.2);
+        -moz-box-shadow: 0px 0px 52px -3px rgba(70, 235, 165, 0.2);
+        box-shadow: 0px 0px 52px -3px rgba(70, 235, 165, 0.2);
+    }
+</style>
