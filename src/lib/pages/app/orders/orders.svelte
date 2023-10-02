@@ -1,4 +1,3 @@
-<h1 class=" flex-col top-12 left-8 text-brand text-4xl m-4">Order History</h1>
 <div class=" rounded-xl bg-backgroundSecondary px-4 py-4 ">
     <p class="text-xl text-left m-2">
         Subway
