@@ -181,12 +181,7 @@
 
     a,
     button {
-        @apply font-semibold;
-    }
-
-    a,
-    button {
-        @apply select-none;
+        @apply font-semibold select-none;
     }
 
     input {
