@@ -41,13 +41,12 @@
 
 <div class="absolute w-screen bg-gradient-to-b from-backgroundSecondary via-background to-background z-[-1] bg-no-repeat" id="background" bind:this={background} />
 
-<div class="absolute h-screen top-0 left-1/2 -translate-x-1/2 w-screen max-w-[650px] px-7 pt-12 overflow-y-auto" bind:this={contentContainer} on:scroll={onScroll}>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[650px] px-7 pt-12 h-screen overflow-y-auto" bind:this={contentContainer} on:scroll={onScroll}>
     {#if isMobile}
-        <p class="w-full rounded-lg border border-backgroundSecondary px-6 py-4 bg-red-500 text-left mb-6 font-medium">Quado is intended for use on mobile devices. Expect bugs while using on desktop during the beta phases.</p>
+        <p class="w-full px-6 py-4 mb-6 font-medium text-left bg-red-500 border rounded-lg border-backgroundSecondary">Quado is intended for use on mobile devices. Expect bugs while using on desktop.</p>
     {/if}
 
     <Header />
-
     <slot />
 </div>
 

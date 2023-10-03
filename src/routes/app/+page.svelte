@@ -1,6 +1,6 @@
 <script lang="ts">
     import Search from "$lib/pages/app/home/search.svelte";
-    import Section from "$lib/pages/app/home/section.svelte";
+    import Section from "$lib/pages/app/home/section/section.svelte";
 </script>
 
 <Search />

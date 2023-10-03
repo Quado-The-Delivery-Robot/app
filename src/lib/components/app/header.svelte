@@ -1,12 +1,15 @@
 <script lang="ts">
     import ArrowLeft from "../images/arrowLeft.svelte";
-    import { page } from "$app/stores";
+    import { page, navigating } from "$app/stores";
     import { onMount } from "svelte";
 
     $: isHome = $page.url.pathname === "/app";
+    let isMounted: boolean = false;
     let pageName: string;
 
-    onMount(() => {
+    function getPageName() {
+        if (!isMounted) return;
+
         const header: HTMLHeadingElement | null = document.querySelector("h1");
 
         if (header !== null) {
@@ -15,6 +18,13 @@
         } else {
             pageName = "Quado";
         }
+    }
+
+    $: if ($navigating === null) getPageName();
+
+    onMount(() => {
+        isMounted = true;
+        getPageName();
     });
 </script>
 

@@ -1,6 +1,10 @@
 <script lang="ts">
-    import Orders from "$lib/pages/app/orders/orders.svelte";
+    import PageTitle from "$lib/components/pageTitle.svelte";
+    import Order from "$lib/pages/app/orders/order.svelte";
 </script>
 
-<h1>Order History</h1>
-<Orders />
+<PageTitle>Orders</PageTitle>
+
+<div class="flex-col flex gap-4">
+    <Order order={{ status: "In progress", restaurant: { name: "Subway", colors: ["#002a06"] }, price: 25.25, details: `6" Italian w/ Ham` }} />
+</div>

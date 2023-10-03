@@ -1,7 +1,7 @@
 <script lang="ts">
     import "$lib/components/tailwind.css";
-
     import { onMount } from "svelte";
+
     let heightScreenElements: HTMLElement[];
     let classRegex: RegExp = /(lg|sm|md)\:h\-/gm;
     let selectorRegex: RegExp = /(lg|sm|md)/gm;
@@ -67,6 +67,6 @@
     <title>Quado</title>
 </svelte:head>
 
-<main class="h-auto w-screen select-text overflow-hidden text-center font-salmaPro text-primary">
+<main class="h-screen w-screen select-text overflow-hidden text-center font-salmaPro text-primary">
     <slot />
 </main>

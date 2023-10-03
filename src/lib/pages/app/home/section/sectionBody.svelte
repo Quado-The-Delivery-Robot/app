@@ -21,7 +21,7 @@
     {#if loading === true}
         <p class="text-base text-primary-800 text-left font-light">Loading...</p>
     {:else}
-        <div class="sectionBodyInner flex gap-4 w-full overflow-x-auto snap-x">
+        <div class="sectionBodyInner flex gap-4 w-full overflow-x-auto snap-x snap-mandatory">
             {#each restaurants as restaurant}
                 {#if type == "mini"}
                     <MiniContainer {restaurant} />
