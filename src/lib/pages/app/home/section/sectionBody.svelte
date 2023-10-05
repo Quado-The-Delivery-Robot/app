@@ -1,7 +1,9 @@
 <script lang="ts">
     import MiniContainer from "./containers/mini.svelte";
     import FullContainer from "./containers/full.svelte";
+
     import { onMount } from "svelte";
+    import { PUBLIC_ENDPOINT } from "$env/static/public";
 
     export let endpoint: string;
     export let type: "mini" | "full";
@@ -10,7 +12,7 @@
     let loading: boolean = true;
 
     onMount(async () => {
-        const result = await fetch(endpoint);
+        const result = await fetch(`${PUBLIC_ENDPOINT}${endpoint}`);
         const { restaurants: recommendedRestaurants } = await result.json();
         restaurants = recommendedRestaurants;
         loading = false;
