@@ -44,6 +44,7 @@
     //fixes bug on IOS where the viewport space is bigger than the innerHeight
     function updateHeightElements() {
         heightScreenElements = Array.from(document.querySelectorAll(".h-screen") as unknown as HTMLCollectionOf<HTMLElement>);
+            
         heightScreenElements.forEach((element: HTMLElement) => {
             //check to make sure that size should be set
             if (checkIfSelectorMatch(element) === true) {
@@ -57,8 +58,6 @@
 
     onMount(() => {
         updateHeightElements();
-
-        //update the height whenever the window is resized
         window.addEventListener("resize", updateHeightElements);
     });
 </script>

@@ -11,3 +11,10 @@ export type order = {
     restaurant: string;
     items: orderItem[];
 };
+
+export type restaurant = {
+    name: string,
+    colors: string[],
+    tags: string[],
+    image: string,
+}
