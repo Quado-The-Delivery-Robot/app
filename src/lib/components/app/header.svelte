@@ -5,7 +5,7 @@
 
     $: isHome = $page.url.pathname === "/app";
     let isMounted: boolean = false;
-    let pageName: string;
+    let pageName: string = $page.url.pathname;
 
     function getPageName() {
         if (!isMounted) return;

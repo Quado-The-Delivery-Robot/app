@@ -9,9 +9,10 @@
     </div>
 
     <p class="text-primary font-medium text-lg flex justify-start items-center mb-2">
-        {#if order.status == "In progress"}
+        {#if order.status !== "Delivered"}
             <div class="inProgressIndicator aspect-square h-2.5 bg-brand rounded-full mr-2" />
         {/if}
+
         {order.status}
     </p>
 

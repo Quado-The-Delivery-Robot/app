@@ -1,11 +1,19 @@
 <script lang="ts">
     import PageTitle from "$lib/components/pageTitle.svelte";
     import Order from "$lib/pages/app/orders/order.svelte";
+    import type { order } from "$lib/types";
+
+    export let { orders }: { orders: order[] } = { orders: [] };
 </script>
 
 <PageTitle>Orders</PageTitle>
 
 <div class="flex-col flex gap-4">
-    <Order order={{ status: "In progress", restaurant: { name: "Subway", colors: ["#002a06"] }, price: 25.25, details: `6" Italian w/ Ham` }} />
-    <Order order={{ status: "Delivered", restaurant: { name: "Subway", colors: ["#002a06"] }, price: 25.25, details: `6" Italian w/ Ham` }} />
+    {#if orders.length == 0}
+        <p>Try ordering something!</p>
+    {:else}
+        {#each orders as { status, restaurant, items, price }}
+            <Order order={{ status, restaurant, price, details: items.join(", ") }} />
+        {/each}
+    {/if}
 </div>

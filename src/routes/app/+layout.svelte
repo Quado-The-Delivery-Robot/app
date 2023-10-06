@@ -2,12 +2,12 @@
     import Header from "$lib/components/app/header.svelte";
     import ActionBar from "$lib/components/app/actionBar.svelte";
     import { onMount } from "svelte";
+    import { goto } from "$app/navigation";
 
     let actionBar: HTMLDivElement;
     let contentContainer: HTMLDivElement;
     let background: HTMLDivElement;
     let scrollTicking: boolean = false;
-    let isMobile: boolean = false;
 
     function updateBackground() {
         background.style.backgroundPosition = `0% ${(contentContainer.scrollTop / background.clientHeight) * 100}%`;
@@ -32,20 +32,20 @@
     }
 
     onMount(() => {
-        isMobile = matchMedia("(pointer:fine)").matches;
+        const isMobile: boolean = !matchMedia("(pointer:fine)").matches;
 
-        updateActionBarDependentsHeight();
-        window.addEventListener("resize", updateActionBarDependentsHeight);
+        if (!isMobile) {
+            goto("/desktopUser");
+        } else {
+            updateActionBarDependentsHeight();
+            window.addEventListener("resize", updateActionBarDependentsHeight);
+        }
     });
 </script>
 
 <div class="absolute w-screen bg-gradient-to-b from-backgroundSecondary via-background to-background z-[-1] bg-no-repeat" id="background" bind:this={background} />
 
 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[650px] px-7 pt-12 h-screen overflow-y-auto" bind:this={contentContainer} on:scroll={onScroll}>
-    {#if isMobile}
-        <p class="w-full px-6 py-4 mb-6 font-medium text-left bg-red-500 border rounded-lg border-backgroundSecondary">Quado is intended for use on mobile devices. Expect bugs while using on desktop.</p>
-    {/if}
-
     <Header />
     <slot />
 </div>
