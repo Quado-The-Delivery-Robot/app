@@ -32,14 +32,8 @@
     }
 
     onMount(() => {
-        const isMobile: boolean = !matchMedia("(pointer:fine)").matches;
-
-        if (!isMobile) {
-            goto("/desktopUser");
-        } else {
-            updateActionBarDependentsHeight();
-            window.addEventListener("resize", updateActionBarDependentsHeight);
-        }
+        updateActionBarDependentsHeight();
+        window.addEventListener("resize", updateActionBarDependentsHeight);
     });
 </script>
 
