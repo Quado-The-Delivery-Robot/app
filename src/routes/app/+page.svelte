@@ -1,6 +1,6 @@
 <script lang="ts">
     import Search from "$lib/pages/app/home/search.svelte";
-    import Section from "$lib/pages/app/home/section/section.svelte";
+    import Section from "$lib/components/app/section/section.svelte";
     import type { restaurant } from "$lib/types";
 
     export let data: { page: { [key: string]: { type: string; restaurants: restaurant[] } } } = { page: {} };
