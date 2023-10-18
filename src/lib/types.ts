@@ -17,4 +17,6 @@ export type restaurant = {
     colors: string[],
     tags: string[],
     image: string,
+    nameID: string,
+    items: any,
 }
