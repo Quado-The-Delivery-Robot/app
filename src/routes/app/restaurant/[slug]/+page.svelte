@@ -52,7 +52,7 @@
 <PageTitle>{data.page.restaurant.name}</PageTitle>
 
 <div class="flex flex-col justify-center items-start gap-16">
-    {#each Object.entries(data.page.sections) as [sectionName, sectionData]}
-        <Section {sectionName} type="mini" restaurants={[]} />
+    {#each Object.entries(data.page.sections) as [sectionName, type]}
+        <Section {sectionName} {type} data={data.page.restaurant.items} />
     {/each}
 </div>
