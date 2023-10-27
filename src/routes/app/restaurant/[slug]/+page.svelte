@@ -1,6 +1,7 @@
 <script lang="ts">
     import PageTitle from "$lib/components/pageTitle.svelte";
     import Section from "$lib/components/app/section/section.svelte";
+    import ItemInfo from "$lib/pages/app/restuarant/itemInfo.svelte";
     import { onMount } from "svelte";
     import type { restaurant, restuarantItem } from "$lib/types";
 
@@ -52,6 +53,8 @@
         background.style.setProperty("--tw-gradient-from", shadeColor(data.page.restaurant.colors[0], -70));
     });
 </script>
+
+<ItemInfo />
 
 <PageTitle>{data.page.restaurant.name}</PageTitle>
 

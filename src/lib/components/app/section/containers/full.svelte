@@ -6,7 +6,7 @@
     export let callback: (data: restaurant | restuarantItem) => any = () => {};
     let colors: string[] = ["#000000", "#ffffff", "#ffffff"];
     let subtext: string;
-    let pretext: string;
+    let pretext: string="";
 
     onMount(() => {
         if ("colors" in data) {
