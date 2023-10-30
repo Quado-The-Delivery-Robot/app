@@ -18,6 +18,7 @@
             sections: {},
         },
     };
+    let itemInfoComponent: any;
 
     // https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
     function shadeColor(color: string, percent: number): string {
@@ -45,7 +46,7 @@
     }
 
     function itemClicked(data: restuarantItem): void {
-        console.log(data);
+        itemInfoComponent.open(data);
     }
 
     onMount(() => {
@@ -54,7 +55,7 @@
     });
 </script>
 
-<ItemInfo />
+<ItemInfo bind:this={itemInfoComponent} />
 
 <PageTitle>{data.page.restaurant.name}</PageTitle>
 

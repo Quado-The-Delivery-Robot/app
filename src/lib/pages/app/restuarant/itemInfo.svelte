@@ -1,27 +1,30 @@
 <script lang="ts">
+    import type { restuarantItem } from "$lib/types";
     import anime from "animejs";
     import { onMount } from "svelte";
 
     let container: HTMLDivElement;
+    let data: restuarantItem;
 
-    	
-  $: checkTrue = () => {
-		console.log("checkTrue()");
-		
-	}
+    export function open(newData: restuarantItem) {
+        data = newData;
 
+        container.style.display = "block";
+
+        anime({
+            targets: container,
+            translateY: ["100%", "0%"],
+            duration: 5000,
+            easing: "easeOutQuint",
+        });
+    }
     onMount(() => {
-        setTimeout(() => {
-            anime({
-                targets: container,
-                backgroundColor: ["#FFF", "#000"],
-                duration: 5000,
-                easing: "easeInOutQuad",
-            });
-        }, 5000);
-
+        //const actionBar: HTMLDivElement = document.querySelector("#actionBar")!;
+       // container.style.bottom = `-${actionBar.clientHeight}px`;
     });
+
 </script>
 
-<div class=" absolute w-screen h-1/2 bottom-0 z-10" bind:this={container}  />
-
+<div class="hidden absolute w-screen h-1/2 bottom-0 bg-red-500 z-20 left-0" bind:this={container} >
+    <p class="text-sm text-ellipsis" style="color:aliceblue"></p>
+</div>
