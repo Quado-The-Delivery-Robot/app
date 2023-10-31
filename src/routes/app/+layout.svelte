@@ -2,7 +2,6 @@
     import Header from "$lib/components/app/header.svelte";
     import ActionBar from "$lib/components/app/actionBar.svelte";
     import { onMount } from "svelte";
-    import { goto } from "$app/navigation";
 
     let actionBar: HTMLDivElement;
     let contentContainer: HTMLDivElement;
