@@ -1,7 +1,8 @@
 <script lang="ts">
     import PageTitle from "$lib/components/pageTitle.svelte";
     import Section from "$lib/components/app/section/section.svelte";
-    import ItemInfo from "$lib/pages/app/restuarant/itemInfo.svelte";
+    import { get } from "svelte/store";
+    import { itemInfo } from "$lib/stores";
     import { onMount } from "svelte";
     import type { restaurant, restuarantItem } from "$lib/types";
 
@@ -18,7 +19,6 @@
             sections: {},
         },
     };
-    let itemInfoComponent: any;
 
     // https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
     function shadeColor(color: string, percent: number): string {
@@ -46,7 +46,7 @@
     }
 
     function itemClicked(data: restuarantItem): void {
-        itemInfoComponent.open(data);
+        get(itemInfo).open(data);
     }
 
     onMount(() => {
@@ -54,8 +54,6 @@
         background.style.setProperty("--tw-gradient-from", shadeColor(data.page.restaurant.colors[0], -70));
     });
 </script>
-
-<ItemInfo bind:this={itemInfoComponent} />
 
 <PageTitle>{data.page.restaurant.name}</PageTitle>
 
