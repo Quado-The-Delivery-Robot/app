@@ -25,13 +25,11 @@
     }
 </script>
 
-<div class="hidden absolute w-screen h-1/2 bottom-0 bg-backgroundSecondary z-20 left-0 rounded-t-[1.5rem]" bind:this={container}>
-    <p class="text-lg text-semibold " style="color:aliceblue">{data.name}</p>
-    <div class="flex justify-center gap-2">
-        <p class=" text-base text-ellipsis text-left" style="color:aliceblue">${data.price}</p> 
-        <div class="w-[1px] h-full bg-white"></div>
+<div class="hidden absolute w-screen h-1/2 bottom-0 bg-backgroundSecondary z-20 left-0 rounded-t-[1.5rem] px-7 pt-6" bind:this={container}>
+    <p class=" text-xl font-semibold font-poppins" style="color:aliceblue ">{data.name}</p>
+    <div class="flex justify-center gap-4 mb-4">
+        <p class=" text-base text-ellipsis text-left" style="color:aliceblue">${data.price}</p>
         <p class=" text-base text-ellipsis text-left" style="color:aliceblue">{data.calories} calories</p>
-    </div> 
+    </div>
     <p class=" text-base text-ellipsis text-left" style="color:aliceblue">{data.description}</p>
-   
 </div>

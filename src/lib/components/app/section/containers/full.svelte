@@ -36,7 +36,7 @@
         <img class="w-14 h-14" src={data.image} alt={data.name} />
     {/if}
 
-    <div class="h-full py-1.5 flex flex-col justify-between items-start">
+    <div class="h-full py-1.5 flex flex-col justify-between items-start text-left whitespace-nowrap overflow-hidden ">
         <p class="font-semibold text-lg" style="color: {colors[1]};">{data.name}</p>
         <p class="text-sm text-ellipsis" style="color: {colors[2]};">{pretext}{subtext}</p>
     </div>
