@@ -10,6 +10,6 @@
 
 <div class="flex flex-col justify-center items-start gap-16">
     {#each Object.entries(data.page) as [sectionName, sectionData]}
-        <Section {sectionName} type={sectionData.type} restaurants={sectionData.restaurants} />
+        <Section {sectionName} type={sectionData.type} data={sectionData.restaurants} />
     {/each}
 </div>

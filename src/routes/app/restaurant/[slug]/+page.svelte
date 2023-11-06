@@ -1,8 +1,10 @@
 <script lang="ts">
     import PageTitle from "$lib/components/pageTitle.svelte";
     import Section from "$lib/components/app/section/section.svelte";
+    import { get } from "svelte/store";
+    import { itemInfo } from "$lib/stores";
     import { onMount } from "svelte";
-    import type { restaurant } from "$lib/types";
+    import type { restaurant, restuarantItem } from "$lib/types";
 
     export let data: { page: { restaurant: restaurant; sections: { [key: string]: string } } } = {
         page: {
@@ -43,6 +45,10 @@
         return "#" + RR + GG + BB;
     }
 
+    function itemClicked(data: restuarantItem): void {
+        get(itemInfo).open(data);
+    }
+
     onMount(() => {
         const background = document.getElementById("background")!;
         background.style.setProperty("--tw-gradient-from", shadeColor(data.page.restaurant.colors[0], -70));
@@ -52,7 +58,7 @@
 <PageTitle>{data.page.restaurant.name}</PageTitle>
 
 <div class="flex flex-col justify-center items-start gap-16">
-    {#each Object.entries(data.page.sections) as [sectionName, sectionData]}
-        <Section {sectionName} type="mini" restaurants={[]} />
+    {#each Object.entries(data.page.sections) as [sectionName, type]}
+        <Section {sectionName} {type} data={data.page.restaurant.items} callback={itemClicked} />
     {/each}
 </div>

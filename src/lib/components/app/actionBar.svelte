@@ -8,7 +8,7 @@
     export let actionBar: HTMLDivElement;
 </script>
 
-<div class="absolute bottom-0 left-1/2 -translate-x-1/2 max-w-[650px] w-screen h-auto flex justify-between items-center px-10 z-10 backdrop-blur-lg backdrop-brightness-[0.1] children:pt-3 children:pb-6" bind:this={actionBar}>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 max-w-[650px] w-screen h-auto flex justify-between items-center px-10 z-10 backdrop-blur-lg backdrop-brightness-[0.1] children:pt-3 children:pb-6" id="actionBar" bind:this={actionBar}>
     <a href="/app">
         <HomeIcon classes="aspect-square h-7 fill-brand-600" />
     </a>

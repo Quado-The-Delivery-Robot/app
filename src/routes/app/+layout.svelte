@@ -1,12 +1,14 @@
 <script lang="ts">
     import Header from "$lib/components/app/header.svelte";
     import ActionBar from "$lib/components/app/actionBar.svelte";
+    import ItemInfo from "$lib/components/itemInfo.svelte";
     import { onMount } from "svelte";
-    import { goto } from "$app/navigation";
+    import { itemInfo as itemInfoStore } from "$lib/stores";
 
     let actionBar: HTMLDivElement;
     let contentContainer: HTMLDivElement;
     let background: HTMLDivElement;
+    let itemInfo:any
     let scrollTicking: boolean = false;
 
     function updateBackground() {
@@ -34,6 +36,8 @@
     onMount(() => {
         updateActionBarDependentsHeight();
         window.addEventListener("resize", updateActionBarDependentsHeight);
+
+        itemInfoStore.set(itemInfo)
     });
 </script>
 
@@ -45,6 +49,8 @@
 </div>
 
 <ActionBar bind:actionBar />
+
+<ItemInfo bind:this={itemInfo}></ItemInfo>
 
 <style>
     #background {

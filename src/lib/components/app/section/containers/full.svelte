@@ -1,12 +1,43 @@
 <script lang="ts">
-    export let restaurant: any;
+    import type { restaurant, restuarantItem } from "$lib/types";
+    import { onMount } from "svelte";
+
+    export let data: restaurant | restuarantItem;
+    export let callback: (data: restaurant | restuarantItem) => any = () => {};
+    let colors: string[] = ["#000000", "#ffffff", "#ffffff"];
+    let subtext: string;
+    let pretext: string="";
+
+    onMount(() => {
+        if ("colors" in data) {
+            colors = data.colors;
+        }
+
+        if ("tags" in data) {
+            subtext = data.tags.join(", ");
+        } else if ("description" in data) {
+            subtext = data.description;
+        }
+
+        if ("price" in data) {
+            pretext = `$${data.price} | `;
+        }
+    });
 </script>
 
-<div class="h-full rounded-lg p-4 border border-backgroundSecondary bg-background flex items-center justify-start gap-4 snap-start w-[290px] shrink-0" style="background-color: {restaurant.colors[0]};">
-    <img class="w-14 h-14" src={restaurant.image} alt={restaurant.name} />
+<button
+    on:click={() => {
+        callback(data);
+    }}
+    class="h-full rounded-lg p-4 border border-backgroundSecondary bg-background flex items-center justify-start gap-4 snap-start w-[290px] shrink-0"
+    style="background-color: {colors[0]};"
+>
+    {#if "image" in data}
+        <img class="w-14 h-14" src={data.image} alt={data.name} />
+    {/if}
 
-    <div class="h-full py-1.5 flex flex-col justify-between items-start">
-        <p class="font-semibold text-lg" style="color: {restaurant.colors[1]};">{restaurant.name}</p>
-        <p class="text-sm text-ellipsis" style="color: {restaurant.colors[2]};">{restaurant.tags.join(", ")}</p>
+    <div class="h-full py-1.5 flex flex-col justify-between items-start text-left whitespace-nowrap overflow-hidden ">
+        <p class="font-semibold text-lg" style="color: {colors[1]};">{data.name}</p>
+        <p class="text-sm text-ellipsis" style="color: {colors[2]};">{pretext}{subtext}</p>
     </div>
-</div>
+</button>
