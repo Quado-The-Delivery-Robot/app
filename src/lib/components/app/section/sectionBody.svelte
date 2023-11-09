@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { Splide } from "@splidejs/svelte-splide";
     import MiniContainer from "./containers/mini.svelte";
     import FullContainer from "./containers/full.svelte";
     import type { restaurant, restuarantItem } from "$lib/types";
@@ -8,25 +9,31 @@
     export let callback: (data: restaurant | restuarantItem) => any = () => {};
 </script>
 
-<div class="rounded-lg overflow-hidden">
-    <div class="sectionBodyInner flex gap-4 w-full overflow-x-scroll snap-x snap-mandatory">
-        {#each data as item}
-            {#if type == "mini"}
-                <MiniContainer data={item} {callback} />
-            {:else}
-                <FullContainer data={item} {callback} />
-            {/if}
-        {/each}
+{#await data}
+    <p>Loading...</p>
+{:then items}
+    <div class="rounded-lg overflow-hidden">
+        <Splide
+            options={{
+                type: "loop",
+                gap: "1rem",
+                perMove: 1,
+                wheel: true,
+                autoHeight: true,
+                autoWidth: true,
+                focus: 1,
+                arrows: false,
+            }}
+        >
+            {#each items as item}
+                {#if type == "mini"}
+                    <MiniContainer data={item} {callback} />
+                {:else}
+                    <FullContainer data={item} {callback} />
+                {/if}
+            {/each}
+        </Splide>
     </div>
-</div>
-
-<style>
-    .sectionBodyInner::-webkit-scrollbar {
-        display: none;
-    }
-
-    .sectionBodyInner {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-</style>
+{:catch error}
+    <p style="color: red">{error.message}</p>
+{/await}
