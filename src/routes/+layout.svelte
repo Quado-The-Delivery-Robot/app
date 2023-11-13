@@ -1,4 +1,5 @@
 <script lang="ts">
+    import '@splidejs/svelte-splide/css/core';
     import "$lib/components/tailwind.css";
     import { onMount } from "svelte";
 
@@ -44,7 +45,7 @@
     //fixes bug on IOS where the viewport space is bigger than the innerHeight
     function updateHeightElements() {
         heightScreenElements = Array.from(document.querySelectorAll(".h-screen") as unknown as HTMLCollectionOf<HTMLElement>);
-            
+
         heightScreenElements.forEach((element: HTMLElement) => {
             //check to make sure that size should be set
             if (checkIfSelectorMatch(element) === true) {
