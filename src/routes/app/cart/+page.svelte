@@ -4,6 +4,10 @@
 
 <PageTitle>Cart</PageTitle>
 
-<button class="flex " >
-    <div class="bg-red-500 border-2 border-red-500 h-full rounded-lg pd-4 text-left"> dummy</div>
+<div class="justify-beteween flex-col">
+    <div class="bg-red-500 border-2 border-red-500 h-full rounded-lg pd-4">item</div>
+    <div class="bg-red-500 border-2 border-red-500 h-full rounded-lg pd-4">quinty</div>
+</div>
+<button class="flex justify-between w-full " >
+    
 </button>
