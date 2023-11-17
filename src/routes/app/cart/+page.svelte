@@ -1,13 +1,23 @@
 <script lang="ts">
     import PageTitle from "$lib/components/pageTitle.svelte";
+    import { PUBLIC_ENDPOINT } from "$env/static/public";
+
+    function testOrder() {
+        fetch(PUBLIC_ENDPOINT + "/v1/orders/new", {
+            method: "POST",
+            body: JSON.stringify({
+                restaurant: "subway",
+                items: [
+                    {
+                        id: 0,
+                        quantity: 1,
+                    },
+                ],
+            }),
+        });
+    }
 </script>
 
 <PageTitle>Cart</PageTitle>
 
-<div class="justify-beteween flex-col">
-    <div class="bg-red-500 border-2 border-red-500 h-full rounded-lg pd-4">item</div>
-    <div class="bg-red-500 border-2 border-red-500 h-full rounded-lg pd-4">quinty</div>
-</div>
-<button class="flex justify-between w-full " >
-    
-</button>
+<button on:click={testOrder}>Place test order</button>
