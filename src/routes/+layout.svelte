@@ -1,5 +1,5 @@
 <script lang="ts">
-    import '@splidejs/svelte-splide/css/core';
+    import "@splidejs/svelte-splide/css/core";
     import "$lib/components/tailwind.css";
     import { onMount } from "svelte";
 

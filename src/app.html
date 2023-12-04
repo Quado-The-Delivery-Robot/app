@@ -5,6 +5,13 @@
         <link rel="icon" href="%sveltekit.assets%/favicon.png" />
         <meta name="viewport" content="width=device-width" />
         %sveltekit.head%
+
+        <style>
+            /* Removes splidejs slider */
+            .splide__pagination {
+                display: none !important;
+            }
+        </style>
     </head>
 
     <body class="bg-black" data-sveltekit-preload-data="hover">
