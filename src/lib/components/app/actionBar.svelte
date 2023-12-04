@@ -1,9 +1,9 @@
 <script lang="ts">
     import HomeIcon from "../images/home.svelte";
     import SettingsIcon from "../images/settings.svelte";
-    import BasketIcon from "../images/basket.svelte";
+    import CartIcon from "../images/cart.svelte";
     import PlusIcon from "../images/plus.svelte";
-    import { page } from "$app/stores";
+    import HistoryIcon from "../images/history.svelte";
 
     export let actionBar: HTMLDivElement;
 </script>
@@ -13,8 +13,8 @@
         <HomeIcon classes="aspect-square h-7 fill-brand-600" />
     </a>
 
-    <a href="/app/orders">
-        <BasketIcon classes="aspect-square h-7 fill-brand-600" />
+    <a href="/app/cart">
+        <CartIcon classes="aspect-square h-7 fill-brand-600" />
     </a>
 
     <div class="px-2">
@@ -25,11 +25,11 @@
         </div>
     </div>
 
-    <a href="/settings">
-        <SettingsIcon classes="aspect-square h-7 fill-brand-600" />
+    <a href="/app/orders">
+        <HistoryIcon classes="aspect-square h-7 fill-brand-600" />
     </a>
 
-    <a href="/account">
-        <img class="aspect-square h-7 rounded-full border border-backgroundSecondary" src={$page.data.session?.user?.image} alt={$page.data.session?.user?.name} />
+    <a href="/app/settings">
+        <SettingsIcon classes="aspect-square h-7 fill-brand-600" />
     </a>
 </div>
