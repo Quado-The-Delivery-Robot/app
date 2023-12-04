@@ -185,6 +185,6 @@
     }
 
     input {
-        outline: none;
+        @apply outline-none;
     }
 }
