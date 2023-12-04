@@ -45,8 +45,8 @@
         return "#" + RR + GG + BB;
     }
 
-    function itemClicked(data: restuarantItem): void {
-        get(itemInfo).open(data);
+    function itemClicked(data: restuarantItem | restaurant): void {
+        get(itemInfo).open(data as any);
     }
 
     onMount(() => {

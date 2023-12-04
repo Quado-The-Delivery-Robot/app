@@ -15,14 +15,14 @@
     <div class="rounded-lg overflow-hidden">
         <Splide
             options={{
-                type: "loop",
                 gap: "1rem",
                 perMove: 1,
                 wheel: true,
                 autoHeight: true,
                 autoWidth: true,
-                focus: 1,
+                focus: 0,
                 arrows: false,
+                omitEnd: true,
             }}
         >
             {#each items as item}

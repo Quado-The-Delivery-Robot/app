@@ -4,12 +4,15 @@
     import ItemInfo from "$lib/components/itemInfo.svelte";
     import { onMount } from "svelte";
     import { itemInfo as itemInfoStore } from "$lib/stores";
+    import { page, navigating } from "$app/stores";
 
     let actionBar: HTMLDivElement;
     let contentContainer: HTMLDivElement;
     let background: HTMLDivElement;
-    let itemInfo:any
+    let itemInfo: any;
     let scrollTicking: boolean = false;
+
+    $: if ($navigating === null && !$page.url.toString().includes("/restaurant/") && background !== undefined) background.style.setProperty("--tw-gradient-from", "#1E1E21");
 
     function updateBackground() {
         background.style.backgroundPosition = `0% ${(contentContainer.scrollTop / background.clientHeight) * 100}%`;
@@ -37,7 +40,7 @@
         updateActionBarDependentsHeight();
         window.addEventListener("resize", updateActionBarDependentsHeight);
 
-        itemInfoStore.set(itemInfo)
+        itemInfoStore.set(itemInfo);
     });
 </script>
 
@@ -50,7 +53,7 @@
 
 <ActionBar bind:actionBar />
 
-<ItemInfo bind:this={itemInfo}></ItemInfo>
+<ItemInfo bind:this={itemInfo} />
 
 <style>
     #background {
