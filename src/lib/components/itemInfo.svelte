@@ -22,6 +22,7 @@
         anime({
             targets: infoContainer,
             translateY: ["100%", "0%"],
+            translateX: ["-50%", "-50%"],
             duration: 1000,
             easing: "easeOutQuint",
         });
@@ -58,8 +59,8 @@
 </script>
 
 <div class="hidden absolute top-0 left-0 w-screen h-screen overflow-hidden" bind:this={container}>
-    <div class="absolute w-screen h-1/2 bottom-0 bg-backgroundSecondary z-20 left-0 rounded-t-[1.5rem] px-7 pt-6" bind:this={infoContainer}>
-        <button on:mousedown={startDragging} on:mouseup={stopDragging} on:touchstart={startDragging} on:touchend={stopDragging} class="w-full h-4 absolute left-0 top-0 bg-red-500" />
+    <div class="absolute w-screen h-1/2 bottom-0 bg-backgroundSecondary z-20 rounded-t-[1.5rem] px-7 pt-6 max-w-[650px] left-1/2 -translate-x-1/2" bind:this={infoContainer}>
+        <button on:mousedown={startDragging} on:mouseup={stopDragging} on:touchstart={startDragging} on:touchend={stopDragging} class="w-full h-4 absolute left-0 top-0 bg-transparent" />
 
         <p class="text-2xl font-semibold font-poppins">{data.name}</p>
 
