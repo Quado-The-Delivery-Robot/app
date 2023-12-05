@@ -5,7 +5,7 @@ import type { order, restaurant } from "$lib/types";
 const SECTIONS: { [key: string]: string[] } = {
     Recommended: ["full", "/v1/restaurants/recommended"],
     "New to you": ["mini", "/v1/restaurants/recommended"],
-    "Popular": ["mini", "/v1/restaurants/recommended"],
+    Popular: ["mini", "/v1/restaurants/recommended"],
 };
 
 export const load: PageLoad = async ({ fetch }) => {
