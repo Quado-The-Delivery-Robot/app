@@ -64,7 +64,7 @@
         let yPosition: number = 0;
 
         if (event.type == "touchmove") {
-            const touch = (event as any).originalEvent.touches[0] || (event as any).originalEvent.changedTouches[0];
+            const touch = (event as any).touches[0] || (event as any).changedTouches[0];
             yPosition = touch.pageY;
         } else if (event.type == "mousemove") {
             yPosition = (event as any).clientY;
