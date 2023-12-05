@@ -2,10 +2,12 @@
     import type { restuarantItem } from "$lib/types";
     import anime from "animejs";
     import { onMount } from "svelte";
+    import { construct_svelte_component } from "svelte/internal";
 
     let container: HTMLDivElement;
     let infoContainer: HTMLDivElement;
     let isDragging: boolean = false;
+    let startingPosition: number | null = null;
     $: data = {
         name: "",
         price: 0,
@@ -28,13 +30,32 @@
         });
     }
 
+    function close() {
+        anime({
+            targets: infoContainer,
+            translateY: ["0%", "100%"],
+            duration: 1000,
+            easing: "easeOutQuint",
+            complete: () => {
+                container.style.display = "none";
+                infoContainer.style.top = "";
+            },
+        });
+    }
+
     function startDragging() {
         isDragging = true;
+        startingPosition = null;
     }
 
     function stopDragging() {
         isDragging = false;
-        infoContainer.style.top = "";
+        
+        if (-(startingPosition! - parseInt(infoContainer.style.top.replace("px", ""))) >= infoContainer.clientHeight / 2.3) {
+            close();
+        } else {
+            infoContainer.style.top = "";
+        }
     }
 
     function drag(event: MouseEvent | TouchEvent) {
@@ -43,13 +64,15 @@
         let yPosition: number = 0;
 
         if (event.type == "touchmove") {
-            var touch = (event as any).originalEvent.touches[0] || (event as any).originalEvent.changedTouches[0];
+            const touch = (event as any).originalEvent.touches[0] || (event as any).originalEvent.changedTouches[0];
             yPosition = touch.pageY;
         } else if (event.type == "mousemove") {
             yPosition = (event as any).clientY;
         }
 
         infoContainer.style.top = `${yPosition}px`;
+
+        if (startingPosition === null) startingPosition = yPosition;
     }
 
     onMount(() => {
