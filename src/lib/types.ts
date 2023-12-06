@@ -27,4 +27,5 @@ export type restaurant = {
     image: string;
     nameID: string;
     items: any;
+    description: string;
 };

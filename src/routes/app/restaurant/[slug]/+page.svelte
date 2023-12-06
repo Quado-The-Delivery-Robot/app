@@ -1,6 +1,7 @@
 <script lang="ts">
     import PageTitle from "$lib/components/pageTitle.svelte";
     import Section from "$lib/components/app/section/section.svelte";
+    import Hero from "$lib/pages/app/restaurant/hero.svelte";
     import { get } from "svelte/store";
     import { itemInfo } from "$lib/stores";
     import { onMount } from "svelte";
@@ -10,6 +11,7 @@
         page: {
             restaurant: {
                 name: "",
+                description: "",
                 colors: [],
                 tags: [],
                 image: "",
@@ -55,7 +57,13 @@
     });
 </script>
 
+<svelte:head>
+    <title>{data.page.restaurant.name}</title>
+</svelte:head>
+
 <PageTitle>{data.page.restaurant.name}</PageTitle>
+
+<Hero restaurant={data.page.restaurant} />
 
 <div class="flex flex-col justify-center items-start gap-16">
     {#each Object.entries(data.page.sections) as [sectionName, type]}

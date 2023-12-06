@@ -46,7 +46,7 @@
 
 <div class="absolute w-screen bg-gradient-to-b from-backgroundSecondary via-background to-background z-[-1] bg-no-repeat" id="background" bind:this={background} />
 
-<div class="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[650px] px-7 pt-12 h-screen overflow-y-auto" bind:this={contentContainer} on:scroll={onScroll}>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[650px] px-7 pt-12 h-screen overflow-y-auto" id="pageContent" bind:this={contentContainer} on:scroll={onScroll}>
     <Header />
     <slot />
 </div>
