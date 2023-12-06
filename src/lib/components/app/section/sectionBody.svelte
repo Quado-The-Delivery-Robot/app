@@ -6,7 +6,12 @@
 
     export let type: string = "mini";
     export let data: restaurant[] | restuarantItem[] = [];
+    export let colors: string[] | undefined;
     export let callback: (data: restaurant | restuarantItem) => any = () => {};
+
+    function getColors(item: restaurant | any): string[] {
+        return colors === undefined && "colors" in item ? item.colors : colors;
+    }
 </script>
 
 {#await data}
@@ -29,7 +34,7 @@
                 {#if type == "mini"}
                     <MiniContainer data={item} {callback} />
                 {:else}
-                    <FullContainer data={item} {callback} />
+                    <FullContainer data={item} colors={getColors(item)} {callback} />
                 {/if}
             {/each}
         </Splide>

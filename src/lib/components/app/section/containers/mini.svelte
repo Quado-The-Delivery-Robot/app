@@ -2,7 +2,7 @@
     import { SplideSlide } from "@splidejs/svelte-splide";
     import type { restaurant } from "$lib/types";
 
-    export let data: restaurant;
+    export let data: restaurant | any /* This only takes a restaurant but this just removes any type errors. */;
     export let callback: (data: restaurant) => any = () => {};
 </script>
 

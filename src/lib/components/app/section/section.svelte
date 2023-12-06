@@ -4,6 +4,7 @@
     import type { restaurant, restuarantItem } from "$lib/types";
 
     export let data: restaurant[] | restuarantItem[] = [];
+    export let colors: string[] | undefined;
     export let sectionName: string = "";
     export let type: string = "mini";
     export let callback: (data: restaurant | restuarantItem) => any = () => {};
@@ -15,5 +16,5 @@
         <a href="/{sectionName.toLowerCase()}/all" class="flex items-center text-sm opacity-50 font-light">See all <ArrowRight classes="aspect-square h-3.5 stroke-white" /></a>
     </div>
 
-    <SectionBody {data} {type} {callback} />
+    <SectionBody {data} {type} {callback} {colors} />
 </div>

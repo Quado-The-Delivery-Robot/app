@@ -4,24 +4,20 @@
     import { onMount } from "svelte";
 
     export let data: restaurant | restuarantItem;
+    export let colors: string[] = ["#000000", "#ffffff", "#ffffff"];
     export let callback: (data: restaurant | restuarantItem) => any = () => {};
-    let colors: string[] = ["#000000", "#ffffff", "#ffffff"];
-    let subtext: string;
-    let pretext: string = "";
+    let subText: string;
+    let preText: string;
 
     onMount(() => {
-        if ("colors" in data) {
-            colors = data.colors;
-        }
-
         if ("tags" in data) {
-            subtext = data.tags.join(", ");
+            subText = data.tags.join(", ");
         } else if ("description" in data) {
-            subtext = data.description;
+            subText = data.description;
         }
 
         if ("price" in data) {
-            pretext = `$${data.price} | `;
+            preText = `$${data.price}`;
         }
     });
 </script>
@@ -40,7 +36,7 @@
 
         <div class="h-full py-1.5 flex flex-col justify-between items-start text-left whitespace-nowrap overflow-hidden">
             <p class="font-semibold text-lg" style="color: {colors[1]};">{data.name}</p>
-            <p class="text-sm text-ellipsis" style="color: {colors[2]};">{pretext}{subtext}</p>
+            <p class="text-sm text-ellipsis" style="color: {colors[2]};"><span class="font-semibold {preText !== undefined ? "mr-2" : ""}">{preText !== undefined ? preText : ""}</span>{subText}</p>
         </div>
     </button>
 </SplideSlide>
