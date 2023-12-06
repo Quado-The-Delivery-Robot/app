@@ -59,7 +59,11 @@
 
     onMount(() => {
         updateHeightElements();
-        window.addEventListener("resize", updateHeightElements);
+
+        // Replaces document resize because for some reason the body tag is never set to the right size.
+        setInterval(() => {
+            updateHeightElements();
+        }, 1000 / 15);
     });
 </script>
 
@@ -67,6 +71,6 @@
     <title>Quado</title>
 </svelte:head>
 
-<main class="h-screen w-screen select-text overflow-hidden text-center font-salmaPro text-primary">
+<main class="h-screen w-screen select-text overflow-hidden text-center">
     <slot />
 </main>
