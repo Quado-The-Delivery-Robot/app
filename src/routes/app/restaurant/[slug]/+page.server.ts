@@ -1,5 +1,5 @@
 import { PUBLIC_ENDPOINT } from "$env/static/public";
-import type { PageLoad } from "./$types";
+import type { PageServerLoad } from "./$types";
 import type { order, restaurant } from "$lib/types";
 
 const SECTIONS: { [key: string]: string } = {
@@ -8,7 +8,7 @@ const SECTIONS: { [key: string]: string } = {
     Popular: "full",
 };
 
-export const load: PageLoad = async ({ fetch, params }) => {
+export const load: PageServerLoad = async ({ fetch, params }) => {
     const result = await fetch(`${PUBLIC_ENDPOINT}/v1/restaurants/info/${params.slug}`);
     const { restaurant } = await result.json();
 

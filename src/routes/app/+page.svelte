@@ -15,6 +15,6 @@
 
 <div class="flex flex-col justify-center items-start gap-16">
     {#each Object.entries(data.page) as [sectionName, sectionData]}
-        <Section {sectionName} type={sectionData.type} data={sectionData.restaurants} {callback} />
+        <Section {sectionName} type={sectionData.type} data={sectionData.restaurants} colors={undefined} {callback} />
     {/each}
 </div>

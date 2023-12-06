@@ -1,8 +1,8 @@
 import { PUBLIC_ENDPOINT } from "$env/static/public";
 import type { order } from "$lib/types";
-import type { PageLoad } from "./$types";
+import type { PageServerLoad } from "./$types";
 
-export const load: PageLoad = async ({ fetch }) => {
+export const load: PageServerLoad = async ({ fetch }) => {
     const result = await fetch(`${PUBLIC_ENDPOINT}/v1/orders/get`);
     const { orders }: { success: boolean; orders: order[] } = await result.json();
 
