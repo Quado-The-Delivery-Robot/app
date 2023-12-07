@@ -67,10 +67,6 @@
     });
 </script>
 
-<svelte:head>
-    <title>Quado</title>
-</svelte:head>
-
 <main class="h-screen w-screen select-text overflow-hidden text-center">
     <slot />
 </main>
