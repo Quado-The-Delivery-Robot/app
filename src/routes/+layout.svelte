@@ -60,10 +60,19 @@
     onMount(() => {
         updateHeightElements();
 
+        let lastScreenSize: number = 0;
+
         // Replaces document resize because for some reason the body tag is never set to the right size.
-        setInterval(() => {
+        const heightElementsUpdateInterval = setInterval(() => {
+            if (lastScreenSize === window.innerHeight) return;
+
+            lastScreenSize = window.innerHeight;
             updateHeightElements();
-        }, 1000 / 15);
+        }, 500);
+
+        return () => {
+            clearInterval(heightElementsUpdateInterval);
+        }
     });
 </script>
 

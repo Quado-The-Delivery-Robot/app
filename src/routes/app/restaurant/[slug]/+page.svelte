@@ -2,6 +2,7 @@
     import PageTitle from "$lib/components/pageTitle.svelte";
     import Section from "$lib/components/app/section/section.svelte";
     import Hero from "$lib/pages/app/restaurant/hero.svelte";
+    import Bio from "$lib/pages/app/restaurant/bio.svelte";
     import { get } from "svelte/store";
     import { itemInfo } from "$lib/stores";
     import { onMount } from "svelte";
@@ -65,8 +66,10 @@
 
 <Hero restaurant={data.page.restaurant} />
 
-<div class="flex flex-col justify-center items-start gap-16">
+<div class="flex flex-col justify-center items-start gap-16 mb-16">
     {#each Object.entries(data.page.sections) as [sectionName, type]}
         <Section {sectionName} {type} data={data.page.restaurant.items} colors={data.page.restaurant.colors} callback={itemClicked} />
     {/each}
 </div>
+
+<Bio restaurant={data.page.restaurant} />

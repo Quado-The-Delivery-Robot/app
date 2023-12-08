@@ -2,10 +2,12 @@
     import ArrowLeft from "../images/arrowLeft.svelte";
     import { page, navigating } from "$app/stores";
     import { onMount } from "svelte";
+    import { headerSize } from "$lib/stores";
 
     $: isHome = $page.url.pathname === "/app";
     let isMounted: boolean = false;
     let pageName: string = $page.url.pathname;
+    let headerContainer: HTMLDivElement;
 
     function getPageName() {
         if (!isMounted) return;
@@ -25,10 +27,14 @@
     onMount(() => {
         isMounted = true;
         getPageName();
+
+        const computedStyle: CSSStyleDeclaration = window.getComputedStyle(headerContainer);
+        const margin = parseFloat(computedStyle.marginTop) + parseFloat(computedStyle.marginBottom);
+        headerSize.set(headerContainer.offsetHeight + margin);
     });
 </script>
 
-<div class="w-full mb-6 flex {isHome ? 'justify-between' : 'justify-center'} items-center relative">
+<div class="w-full mb-6 flex {isHome ? 'justify-between' : 'justify-center'} items-center relative" bind:this={headerContainer}>
     {#if isHome}
         <div class="text-left">
             <p class="text-lg font-semibold">Quado</p>
